@@ -1,0 +1,22 @@
+#steps:
+#  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+#    entrypoint: 'bash'
+#    args: ['-c', 'gcloud functions deploy gcs_unzip --entry-point gcs_unzip --runtime python39 --memory 4096MB --timeout 540s --trigger-resource "martech-engine" --trigger-event google.storage.object.finalize --source "./src/util-unzip/"']
+
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+    - 'functions'
+    - 'deploy'
+    - 'slugify_util'
+    - '--entry-point'
+    - 'slugify'
+    - '--runtime'
+    - 'python39'
+    - '--memory'
+    - '4096MB'
+    - '--timeout'
+    - '540s'
+    - '--trigger-http'
+    - '--source'
+    - '"./src/"'
